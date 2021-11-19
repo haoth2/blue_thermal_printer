@@ -92,7 +92,7 @@ class BlueThermalPrinter {
       });
 
   ///printNewLine()
-  Future<dynamic> printNewLine() => _channel.invokeMethod('printNewLine');
+  Future<int> printNewLine() => _channel.invokeMethod('printNewLine');
 
   ///paperCut()
   Future<dynamic> paperCut() => _channel.invokeMethod('paperCut');
