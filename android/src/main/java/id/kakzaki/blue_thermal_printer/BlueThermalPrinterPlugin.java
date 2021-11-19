@@ -743,17 +743,19 @@ public class BlueThermalPrinterPlugin implements FlutterPlugin, ActivityAware,Me
 
   }
 
-  private void printNewLine(Result result) {
+  private int printNewLine(Result result) {
     if (THREAD == null) {
       result.error("write_error", "not connected", null);
-      return;
+      return 0;
     }
     try {
       THREAD.write(PrinterCommands.FEED_LINE);
       result.success(true);
+      return 1;
     } catch (Exception ex) {
       Log.e(TAG, ex.getMessage(), ex);
       result.error("write_error", ex.getMessage(), exceptionToString(ex));
+      return 0;
     }
   }
 
